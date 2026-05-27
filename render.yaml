@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: payroll-backend
+    env: node
+    plan: starter
+    repo: https://github.com/hesbonangwenyi606/Payroll-System.git
+    branch: main
+    buildCommand: npm ci
+    startCommand: npm run backend
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://postgres:postgres@your-db-host:5432/payroll_system
+      - key: PORT
+        value: "4000"
+    healthCheckPath: /
+    regions:
+      - oregon
+    # NOTE: Update the `repo` field above to point to your GitHub repository URL
+    # Example:
+    #   repo: https://github.com/hesbo/payroll-salary-system
+
